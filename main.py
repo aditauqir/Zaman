@@ -54,6 +54,11 @@ def main(stdscr):
                 if key == 10:  # Enter key
                     option = state.menu_options[state.selected_option]
                     
+                    if option == "Cash Out Tokis":
+                        ui.handle_cash_out(state)
+                    elif option == "Buy Tokis":
+                        ui.handle_buy_toki(state)
+                    
                     if option == "Create Task":
                         if ui.handle_create_task(state):
                             # Only continue if task creation succeeded

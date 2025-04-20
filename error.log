@@ -184,3 +184,16 @@ Traceback (most recent call last):
     )
 TypeError: TaskManager.create_task() got an unexpected keyword argument 'eddies_value'
 
+Error: 'AppState' object has no attribute 'FEE_RATE'
+Traceback (most recent call last):
+  File "/home/aditauqir/Documents/Study/hACK/Zaman_2nd_attempt/main.py", line 58, in main
+    ui.handle_cash_out(state)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/aditauqir/Documents/Study/hACK/Zaman_2nd_attempt/modules/ui.py", line 149, in handle_cash_out
+    success, message = state.cash_out(amount)
+                       ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/aditauqir/Documents/Study/hACK/Zaman_2nd_attempt/modules/state.py", line 85, in cash_out
+    fee = round(amount * self.FEE_RATE, 2)
+                         ^^^^^^^^^^^^^
+AttributeError: 'AppState' object has no attribute 'FEE_RATE'
+

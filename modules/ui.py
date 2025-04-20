@@ -88,9 +88,8 @@ class ZamanUI:
     def handle_menu_selection(self, state):
         option = state.menu_options[state.selected_option]
         
-        if option == "Earn Tokis":
-            self.handle_earn_toki(state)
-        elif option == "Cash Out Tokis":
+        
+        if option == "Cash Out Tokis":
             self.handle_cash_out(state)
         elif option == "Buy Tokis":
             self.handle_buy_toki(state)

@@ -28,7 +28,6 @@ class AppState:
         
         self.selected_option = 0
         self.menu_options = [
-            "Earn Tokis",
             "Cash Out Tokis",
             "Buy Tokis",
             "Create Task",
@@ -83,7 +82,7 @@ class AppState:
         if self.toki_balance < amount:
             return False, "Insufficient tokis"
         
-        fee = round(amount * self.FEE_RATE, 2)
+        fee = round(amount * 0.15, 2)
         eddies_earned = (amount - fee) * 190
         
         self.toki_balance -= amount
@@ -103,7 +102,7 @@ class AppState:
             return False, "Amount must be positive"
         
         base_cost = amount * 190
-        fee = round(base_cost * self.FEE_RATE, 2)
+        fee = round(base_cost * 0.15, 2)
         total_cost = base_cost + fee
         
         if self.eddie_balance < total_cost:
