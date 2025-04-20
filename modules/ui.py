@@ -163,68 +163,40 @@ class ZamanUI:
         self.show_message(message, success)
     
     def handle_create_task(self, state):
-        """Handle task creation flow"""
+        """Returns True if task was created successfully"""
         self.stdscr.clear()
-        self.render_main_menu(state)
-        
-        self.safe_addstr(12, 0, "Enter task description:", curses.color_pair(4))
+        # Add this at the start of handle_create_task:
+        self.safe_addstr(0, 40, f"Your Eddie Balance: {state.eddie_balance}", curses.color_pair(2))
+        # Get task description
+        self.safe_addstr(0, 0, "Enter task description (max 100 chars):", curses.color_pair(3))
         curses.echo()
-        curses.curs_set(1)
-        description = self.stdscr.getstr(13, 0, 100).decode()
+        description = self.stdscr.getstr(1, 0, 100).decode().strip()
         curses.noecho()
-        curses.curs_set(0)
         
         if not description:
-            self.show_message("Task description cannot be empty!", False)
-            return
+            self.show_message("Description cannot be empty!", False)
+            return False
         
-        # Get AI estimation
-        self.safe_addstr(15, 0, "Estimating task value with AI...", curses.color_pair(2))
-        self.stdscr.refresh()
+        # Get Eddie cost
+        self.safe_addstr(3, 0, "Enter Eddie cost (90-950):", curses.color_pair(3))
+        eddie_cost = self.get_numeric_input("Eddie cost:")
         
-        task = state.create_task(description)
-        msg = (
-            f"Task created!\n"
-            f"Reward: {task['value']['toki']} toki ({task['value']['eddies']} eddies)\n"
-            f"Difficulty: {task['value']['difficulty']}"
+        if not (90 <= eddie_cost <= 950):
+            self.show_message("Eddie cost must be 190-950", False)
+            return False
+        
+        # Attempt creation
+        success, message, task = state.task_manager.create_task(
+            description=description,
+            creator=state.username,
+            eddie_cost=eddie_cost,
+            user_balance=state.eddie_balance
         )
-        self.show_message(msg, True)
+        
+        if success:
+            state.eddie_balance -= eddie_cost
+            state.save_stats()
+        
+        self.show_message(message, success)
+        return success
     
-    def handle_browse_tasks(self, state):
-        """Display available tasks"""
-        self.stdscr.clear()
-        tasks = state.get_available_tasks()
-        
-        self.safe_addstr(0, 0, "AVAILABLE TASKS", curses.A_BOLD | curses.color_pair(1))
-        
-        if not tasks:
-            self.safe_addstr(2, 0, "No tasks available currently", curses.color_pair(3))
-        else:
-            for idx, task in enumerate(tasks[:10]):  # Show first 10 tasks
-                y = 2 + idx
-                task_str = (
-                    f"{task['id']}. {task['description']}\n"
-                    f"   Reward: {task['value']['toki']} toki | "
-                    f"Difficulty: {task['value']['difficulty']} | "
-                    f"Posted by: {task['creator']}"
-                )
-                self.safe_addstr(y, 0, task_str, curses.color_pair(4))
-        
-        self.safe_addstr(self.height-3, 0, "Enter task ID to complete (or 0 to cancel):", curses.color_pair(6))
-        task_id = self.get_numeric_input("Task ID:")
-        
-        if task_id == 0:
-            return
-        elif task_id:
-            success, message = state.complete_task(task_id)
-            self.show_message(message, success)
-    
-    def handle_menu_selection(self, state):
-        option = state.menu_options[state.selected_option]
-        
-        if option == "Earn Tokis":
-            self.handle_browse_tasks(state)  # Changed from direct earning to task completion
-        elif option == "Create Task":
-            self.handle_create_task(state)
-        elif option == "Browse Tasks":
-            self.handle_browse_tasks(state)

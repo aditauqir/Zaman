@@ -138,27 +138,25 @@ class AppState:
         return self.task_manager.get_all_tasks()
     
     def complete_task(self, task_id):
-        """Complete a task and earn rewards"""
-        reward = self.task_manager.complete_task(task_id, self.username)
-        if reward:
-            self.toki_balance += reward['toki']
-            self.eddie_balance += reward['eddies']
-            self.save_stats()
-            return True, f"Task completed! Earned {reward['toki']} toki and {reward['eddies']} eddies"
-        return False, "Task not found or already completed"
+        """Mark task as completed and return reward"""
+        task = next((t for t in self.task_manager.tasks 
+                if t['id'] == task_id and t['status'] == 'open'), None)
+        if task:
+            task['status'] = 'completed'
+            task['completed_by'] = self.username
+            self.task_manager.save_tasks()
+            return task['reward']
+        return None
     
         # Add these methods to your AppState class
     def get_task_rewards_range(self):
         return {
-            'min_eddies': 190,  # 1 toki worth
+            'min_eddies': 10,  
             'max_eddies': 950   # 5 toki worth
         }
 
-    def validate_task_input(self, eddies, difficulty):
-        """Validate eddie amount and difficulty"""
-        ranges = self.get_task_rewards_range()
-        if not ranges['min_eddies'] <= eddies <= ranges['max_eddies']:
-            return False, f"Eddies must be {ranges['min_eddies']}-{ranges['max_eddies']}"
-        if difficulty not in ['easy', 'medium', 'hard']:
-            return False, "Invalid difficulty"
+    def validate_task_input(self, eddies):
+        """Validate only eddie amount"""
+        if not 10 <= eddies <= 950:
+            return False, "Eddies must be between 10-950"
         return True, ""

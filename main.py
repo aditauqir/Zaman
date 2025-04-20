@@ -6,6 +6,9 @@ from modules.state import AppState
 from modules.ui import ZamanUI
 from modules.task_ui import TaskUI
 from auth import authenticate_user
+from modules.browse_tasks import BrowseTasks
+
+
 
 # Add project directory to Python path
 sys.path.append(str(Path(__file__).parent))
@@ -39,49 +42,40 @@ def main(stdscr):
                 ui.render_main_menu(state)
                 key = stdscr.getch()
                 
-                # Handle key presses
+                # Handle navigation keys
                 if key == curses.KEY_UP:
                     state.nav_up()
+                    continue
                 elif key == curses.KEY_DOWN:
                     state.nav_down()
-                elif key == 10:  # Enter key
+                    continue
+                
+                # Handle Enter key
+                if key == 10:  # Enter key
                     option = state.menu_options[state.selected_option]
                     
                     if option == "Create Task":
-                        desc, eddies, diff = task_ui.get_task_input(state)
-                        if desc:  # Only proceed if inputs were valid
-                            valid, msg = state.validate_task_input(eddies, diff)
-                            if valid:
-                                task = state.task_manager.create_task(
-                                    description=desc,
-                                    creator=state.username,
-                                    eddies_value=eddies,
-                                    difficulty=diff
-                                )
-                                ui.show_message(f"Task #{task['id']} created!", True)
-                            else:
-                                ui.show_message(f"Invalid: {msg}", False)
+                        if ui.handle_create_task(state):
+                            # Only continue if task creation succeeded
+                            continue
+
                     
                     elif option == "Browse Tasks":
-                        ui.handle_browse_tasks(state)
-                    
-                    elif option == "Cash Out Tokis":
-                        ui.handle_cash_out(state)
-                    
-                    elif option == "Buy Tokis":
-                        ui.handle_buy_toki(state)
+                        browse_ui = BrowseTasks(stdscr, state.task_manager, {
+                            'username': state.username,
+                            'eddie_balance': state.eddie_balance
+                        })
+                        browse_ui.display()
+                        continue
+                    # ... handle other menu options ...
                     
                     elif option == "Logout":
                         break
                 
                 elif key == curses.KEY_RESIZE:
                     ui.handle_resize()
-                    
-                elif key == 27:  # ESC key
-                    break
-                    
+                
             except Exception as e:
-                # Write full error to log file
                 with open('error.log', 'a') as f:
                     import traceback
                     f.write(f"Error: {str(e)}\n{traceback.format_exc()}\n")

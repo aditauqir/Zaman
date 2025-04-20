@@ -2,12 +2,6 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-from pathlib import Path
-from datetime import datetime
-
-TASKS_FILE = Path("data/tasks.json")
-
-
 TASKS_FILE = Path("data/tasks.json")
 
 class TaskManager:
@@ -35,43 +29,28 @@ class TaskManager:
         """Save tasks to file"""
         with open(TASKS_FILE, 'w') as f:
             json.dump(self.tasks, f, indent=2)
-    
-    def create_task(self, description, creator, eddies_value, difficulty):
-        """Create task with eddie rewards"""
-        task = {
-            "id": len(self.tasks) + 1,
-            "description": description,
-            "creator": creator,
-            "value": {
-                "eddies": eddies_value,
-                "difficulty": difficulty
-            },
-            "status": "open",
-            "created_at": datetime.now().isoformat(),
-            "completed_by": None
-        }
-        self.tasks.append(task)
-        self.save_tasks()
-        return task
 
-    def create_task(self, description, creator, toki_value, eddies_value, difficulty):
-        """Create task with user-defined values"""
+    def create_task(self, description, creator, eddie_cost, user_balance):
+        """Returns (success: bool, message: str, task: dict)"""
+        if not isinstance(eddie_cost, int) or eddie_cost <= 0:
+            return False, "Eddie cost must be a positive number", None
+            
+        if user_balance < eddie_cost:
+            return False, f"Not enough eddies (Need {eddie_cost}, have {user_balance})", None
+            
         task = {
             "id": len(self.tasks) + 1,
             "description": description,
             "creator": creator,
-            "value": {
-                "toki": toki_value,
-                "eddies": eddies_value,
-                "difficulty": difficulty
-            },
+            "reward": eddie_cost,  # Using reward instead of eddies_value
             "status": "open",
             "created_at": datetime.now().isoformat(),
             "completed_by": None
         }
+    
         self.tasks.append(task)
         self.save_tasks()
-        return task
+        return True, f"Task created for {eddie_cost} eddies", task
 
     def get_all_tasks(self):
         """Get all open tasks"""
@@ -84,5 +63,5 @@ class TaskManager:
                 task['status'] = 'completed'
                 task['completed_by'] = username
                 self.save_tasks()
-                return task['value']
+                return task['reward']
         return None
