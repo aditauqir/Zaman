@@ -1,1 +1,54 @@
-[]
+[
+  {
+    "id": 1,
+    "description": "clearing out the trash",
+    "creator": "atauqir",
+    "value": {
+      "toki": 1,
+      "eddies": 190,
+      "difficulty": "medium"
+    },
+    "status": "completed",
+    "created_at": "2025-04-19T21:11:07.294565",
+    "completed_by": "atauqir"
+  },
+  {
+    "id": 2,
+    "description": "nothing",
+    "creator": "atauqir",
+    "value": {
+      "toki": 1,
+      "eddies": 190,
+      "difficulty": "medium"
+    },
+    "status": "completed",
+    "created_at": "2025-04-19T21:15:35.690330",
+    "completed_by": "atauqir"
+  },
+  {
+    "id": 3,
+    "description": "ok",
+    "creator": "atauqir",
+    "value": {
+      "toki": 1,
+      "eddies": 190,
+      "difficulty": "easy"
+    },
+    "status": "open",
+    "created_at": "2025-04-19T21:24:09.025579",
+    "completed_by": null
+  },
+  {
+    "id": 4,
+    "description": "want",
+    "creator": "atauqir",
+    "value": {
+      "toki": 1,
+      "eddies": 190,
+      "difficulty": "easy"
+    },
+    "status": "open",
+    "created_at": "2025-04-19T21:28:05.789616",
+    "completed_by": null
+  }
+]

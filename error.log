@@ -3,3 +3,8 @@ Error: 'AppState' object has no attribute 'nav_down'
 Error: 'AppState' object has no attribute 'nav_down'
 Error: 'AppState' object has no attribute 'toki_balance'
 Error: 'AppState' object has no attribute 'toki_balance'
+Error: TaskManager.create_task() missing 3 required positional arguments: 'toki_value', 'eddies_value', and 'difficulty'
+Error: not enough values to unpack (expected 4, got 3)
+Error: cannot access local variable 'option' where it is not associated with a value
+Error: cannot access local variable 'option' where it is not associated with a value
+Error: cannot access local variable 'option' where it is not associated with a value

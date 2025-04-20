@@ -146,3 +146,19 @@ class AppState:
             self.save_stats()
             return True, f"Task completed! Earned {reward['toki']} toki and {reward['eddies']} eddies"
         return False, "Task not found or already completed"
+    
+        # Add these methods to your AppState class
+    def get_task_rewards_range(self):
+        return {
+            'min_eddies': 190,  # 1 toki worth
+            'max_eddies': 950   # 5 toki worth
+        }
+
+    def validate_task_input(self, eddies, difficulty):
+        """Validate eddie amount and difficulty"""
+        ranges = self.get_task_rewards_range()
+        if not ranges['min_eddies'] <= eddies <= ranges['max_eddies']:
+            return False, f"Eddies must be {ranges['min_eddies']}-{ranges['max_eddies']}"
+        if difficulty not in ['easy', 'medium', 'hard']:
+            return False, "Invalid difficulty"
+        return True, ""
