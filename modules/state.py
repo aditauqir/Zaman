@@ -6,15 +6,27 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-from task_manager import TaskManager
+from .task_manager import TaskManager
+
+import json
+from pathlib import Path
+from datetime import datetime
+from .task_manager import TaskManager  # Fixed relative import
 
 class AppState:
     def __init__(self, username):
         self.username = username
+        self.stats_file = Path("data") / "stats" / f"{username}.json"
+        self.ledger_file = Path("data") / "zaman_ledger.json"
         self.task_manager = TaskManager()
-        # ... rest of existing code ...
         
-        # Update menu options
+        # Initialize balances
+        self.toki_balance = 0
+        self.eddie_balance = 0
+        self.tasks_completed = 0
+        self.transaction_history = []
+        
+        self.selected_option = 0
         self.menu_options = [
             "Earn Tokis",
             "Cash Out Tokis",
@@ -23,40 +35,31 @@ class AppState:
             "Browse Tasks",
             "Logout"
         ]
-        self.transaction_history = []
-        self.FEE_RATE = 0.15  # 15% fee
-    
+        
+        self.load_stats()  # Load existing data
+
     def load_stats(self):
         try:
             with open(self.stats_file, 'r') as f:
                 stats = json.load(f)
-                self.toki_balance = stats["toki_balance"]
-                self.eddie_balance = stats["eddie_balance"]
+                self.toki_balance = stats.get("toki_balance", 10)  # Default 10 if not exists
+                self.eddie_balance = stats.get("eddie_balance", 500)  # Default 500
                 self.tasks_completed = stats.get("tasks_completed", 0)
                 self.transaction_history = stats.get("transaction_history", [])
         except (FileNotFoundError, json.JSONDecodeError):
-            # Initialize new user
-            self.toki_balance = 10
-            self.eddie_balance = 500
-            self.tasks_completed = 0
-            self.transaction_history = []
-            self.save_stats()
-        
-        # Initialize ledger if not exists
-        if not self.ledger_file.exists():
-            with open(self.ledger_file, 'w') as f:
-                json.dump({"total_fees": 0, "transactions": []}, f)
+            self.save_stats()  # Create new file with defaults
 
     def save_stats(self):
         stats = {
             "toki_balance": self.toki_balance,
             "eddie_balance": self.eddie_balance,
             "tasks_completed": self.tasks_completed,
-            "transaction_history": self.transaction_history[-10:]  # Keep last 10
+            "transaction_history": self.transaction_history[-10:]
         }
+        self.stats_file.parent.mkdir(exist_ok=True)
         with open(self.stats_file, 'w') as f:
             json.dump(stats, f)
-
+            
     def record_transaction(self, transaction_type, amount, fee=0):
         """Record transaction in Zaman's ledger"""
         with open(self.ledger_file, 'r+') as f:
