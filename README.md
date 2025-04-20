@@ -20,6 +20,12 @@ People can earn tokis through one of two ways:
 
 - User complete certain tasks and depending on the nature of the task, the user can earn tokis. It is like a guild system.
 
+### Preview of the App:
+
+![image](https://github.com/user-attachments/assets/d179f616-604d-4087-947f-df28d307fe1e)
+![image](https://github.com/user-attachments/assets/ac65c644-dd32-4013-a5d8-23ad5931fc81)
+
+
 ## How to run the app?
 
 ### Step 1:
