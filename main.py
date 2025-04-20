@@ -66,10 +66,7 @@ def main(stdscr):
 
                     
                     elif option == "Browse Tasks":
-                        browse_ui = BrowseTasks(stdscr, state.task_manager, {
-                            'username': state.username,
-                            'eddie_balance': state.eddie_balance
-                        })
+                        browse_ui = BrowseTasks(stdscr, state.task_manager, state)
                         browse_ui.display()
                         continue
                     # ... handle other menu options ...

@@ -197,3 +197,27 @@ Traceback (most recent call last):
                          ^^^^^^^^^^^^^
 AttributeError: 'AppState' object has no attribute 'FEE_RATE'
 
+Error: 'dict' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/home/aditauqir/Documents/Study/hACK/Zaman_2nd_attempt/main.py", line 69, in main
+    browse_ui = BrowseTasks(stdscr, state.task_manager, {
+        'username': state.username,
+        'eddie_balance': state.eddie_balance
+    })
+  File "/home/aditauqir/Documents/Study/hACK/Zaman_2nd_attempt/modules/browse_tasks.py", line 10, in __init__
+    'username': state.username,
+                ^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'username'
+
+Error: 'dict' object has no attribute 'eddie_balance'
+Traceback (most recent call last):
+  File "/home/aditauqir/Documents/Study/hACK/Zaman_2nd_attempt/main.py", line 69, in main
+    browse_ui = BrowseTasks(stdscr, state.task_manager, {
+        'username': state.username,
+        'eddie_balance': state.eddie_balance
+    })
+  File "/home/aditauqir/Documents/Study/hACK/Zaman_2nd_attempt/modules/browse_tasks.py", line 11, in __init__
+    'eddie_balance': state.eddie_balance
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'eddie_balance'
+
