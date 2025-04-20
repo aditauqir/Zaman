@@ -1,92 +1,292 @@
 [
   {
-    "id": 5,
-    "description": "asaa",
-    "creator": "atauqir",
-    "reward": 234,
+    "id": 1,
+    "description": "Archive 1990s websites (2hr time capsule work)",
+    "creator": "temporal_archivist",
+    "reward": 380,
+    "status": "completed",
+    "created_at": "2025-04-20T09:00:00.000000",
+    "completed_by": "zahr",
+    "time_era": "past"
+  },
+  {
+    "id": 2,
+    "description": "Test prototype hoverboard (risk assessment)",
+    "creator": "future_tech",
+    "reward": 475,
     "status": "open",
-    "created_at": "2025-04-19T23:40:06.615404",
-    "completed_by": null
+    "created_at": "2025-04-20T09:30:00.000000",
+    "completed_by": null,
+    "time_era": "future"
+  },
+  {
+    "id": 3,
+    "description": "Translate 2005 blog posts to neuralink format",
+    "creator": "bridge_ai",
+    "reward": 570,
+    "status": "open",
+    "created_at": "2025-04-20T10:00:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
+  },
+  {
+    "id": 4,
+    "description": "Calibrate antique smartwatch collection",
+    "creator": "retro_tech",
+    "reward": 190,
+    "status": "open",
+    "created_at": "2025-04-20T10:30:00.000000",
+    "completed_by": null,
+    "time_era": "past"
+  },
+  {
+    "id": 5,
+    "description": "Beta-test timezone shifting app",
+    "creator": "chronos_inc",
+    "reward": 665,
+    "status": "open",
+    "created_at": "2025-04-20T11:00:00.000000",
+    "completed_by": null,
+    "time_era": "future"
   },
   {
     "id": 6,
-    "description": "assdas",
-    "creator": "atauqir",
-    "reward": 200,
+    "description": "Digitize VHS family memories (per tape)",
+    "creator": "memory_keeper",
+    "reward": 285,
     "status": "open",
-    "created_at": "2025-04-19T23:46:14.170820",
-    "completed_by": null
+    "created_at": "2025-04-20T11:30:00.000000",
+    "completed_by": null,
+    "time_era": "past"
   },
   {
     "id": 7,
-    "description": "asasas",
-    "creator": "atauqir",
-    "reward": 500,
+    "description": "Map 2000s internet cafes to VR metaverse",
+    "creator": "space_mapper",
+    "reward": 475,
     "status": "open",
-    "created_at": "2025-04-19T23:53:14.627747",
-    "completed_by": null
+    "created_at": "2025-04-20T12:00:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
   },
   {
     "id": 8,
-    "description": "asasas",
-    "creator": "atauqir",
-    "reward": 500,
+    "description": "Train AI on 2010s meme culture",
+    "creator": "digital_anthropologist",
+    "reward": 380,
     "status": "open",
-    "created_at": "2025-04-19T23:59:05.342571",
-    "completed_by": null
+    "created_at": "2025-04-20T12:30:00.000000",
+    "completed_by": null,
+    "time_era": "past"
   },
   {
     "id": 9,
-    "description": "hdbjkkdasjh",
-    "creator": "atauqir",
-    "reward": 900,
+    "description": "Stress-test quantum calendar interface",
+    "creator": "temporal_qa",
+    "reward": 760,
     "status": "open",
-    "created_at": "2025-04-20T00:06:32.241151",
-    "completed_by": null
+    "created_at": "2025-04-20T13:00:00.000000",
+    "completed_by": null,
+    "time_era": "future"
   },
   {
     "id": 10,
-    "description": "asasa",
-    "creator": "atauqir",
-    "reward": 100,
+    "description": "Convert mixtapes to blockchain NFTs",
+    "creator": "audio_alchemist",
+    "reward": 475,
     "status": "open",
-    "created_at": "2025-04-20T00:08:03.833576",
-    "completed_by": null
+    "created_at": "2025-04-20T13:30:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
   },
   {
     "id": 11,
-    "description": "asasa",
-    "creator": "ok",
-    "reward": 122,
+    "description": "Document pre-TikTok dance trends",
+    "creator": "cultural_preserver",
+    "reward": 285,
     "status": "open",
-    "created_at": "2025-04-20T00:13:19.314852",
-    "completed_by": null
+    "created_at": "2025-04-20T14:00:00.000000",
+    "completed_by": null,
+    "time_era": "past"
   },
   {
-    "id": 8,
-    "description": "this",
-    "creator": "atauqir",
+    "id": 12,
+    "description": "Simulate Y2K bug in quantum computers",
+    "creator": "chaos_engineer",
+    "reward": 665,
+    "status": "open",
+    "created_at": "2025-04-20T14:30:00.000000",
+    "completed_by": null,
+    "time_era": "future"
+  },
+  {
+    "id": 13,
+    "description": "Caption 1999 home videos with AI",
+    "creator": "generational_bridge",
+    "reward": 380,
+    "status": "open",
+    "created_at": "2025-04-20T15:00:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
+  },
+  {
+    "id": 14,
+    "description": "Archive GeoCities websites",
+    "creator": "digital_archeologist",
     "reward": 190,
     "status": "open",
-    "created_at": "2025-04-20T00:33:19.894886",
-    "completed_by": null
+    "created_at": "2025-04-20T15:30:00.000000",
+    "completed_by": null,
+    "time_era": "past"
   },
   {
-    "id": 9,
-    "description": "asas",
-    "creator": "atauqir",
-    "reward": 200,
+    "id": 15,
+    "description": "Test timezone-hopping VPN",
+    "creator": "chrono_netsec",
+    "reward": 570,
     "status": "open",
-    "created_at": "2025-04-20T00:33:39.176910",
-    "completed_by": null
+    "created_at": "2025-04-20T16:00:00.000000",
+    "completed_by": null,
+    "time_era": "future"
   },
   {
-    "id": 10,
-    "description": "sassa",
-    "creator": "atauqir",
-    "reward": 90,
+    "id": 16,
+    "description": "Create VR tour of 1990s malls",
+    "creator": "virtual_historian",
+    "reward": 285,
     "status": "open",
-    "created_at": "2025-04-20T00:38:23.559334",
-    "completed_by": null
+    "created_at": "2025-04-20T16:30:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
+  },
+  {
+    "id": 17,
+    "description": "Compile 2000s pop culture references",
+    "creator": "cultural_curator",
+    "reward": 475,
+    "status": "open",
+    "created_at": "2025-04-20T17:00:00.000000",
+    "completed_by": null,
+    "time_era": "past"
+  },
+  {
+    "id": 18,
+    "description": "Test AI-generated time travel stories",
+    "creator": "story_weaver",
+    "reward": 665,
+    "status": "open",
+    "created_at": "2025-04-20T17:30:00.000000",
+    "completed_by": null,
+    "time_era": "future"
+  },
+  {
+    "id": 19,
+    "description": "Create AR scavenger hunt for 2010s nostalgia",
+    "creator": "augmented_reality",
+    "reward": 380,
+    "status": "open",
+    "created_at": "2025-04-20T18:00:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
+  },
+  {
+    "id": 20,
+    "description": "Digitize and restore 1990s video games",
+    "creator": "retro_gamer",
+    "reward": 190,
+    "status": "open",
+    "created_at": "2025-04-20T18:30:00.000000",
+    "completed_by": null,
+    "time_era": "past"
+  },
+  {
+    "id": 21,
+    "description": "Test AI for predicting future trends",
+    "creator": "trend_forecaster",
+    "reward": 570,
+    "status": "open",
+    "created_at": "2025-04-20T19:00:00.000000",
+    "completed_by": null,
+    "time_era": "future"
+  },
+  {
+    "id": 22,
+    "description": "Create digital time capsule for 2020s",
+    "creator": "digital_timekeeper",
+    "reward": 285,
+    "status": "open",
+    "created_at": "2025-04-20T19:30:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
+  },
+  {
+    "id": 23,
+    "description": "Compile 2010s viral videos for AI training",
+    "creator": "viral_video_archivist",
+    "reward": 475,
+    "status": "open",
+    "created_at": "2025-04-20T20:00:00.000000",
+    "completed_by": null,
+    "time_era": "past"
+  },
+  {
+    "id": 24,
+    "description": "Test time travel insurance policies",
+    "creator": "temporal_insurance",
+    "reward": 665,
+    "status": "open",
+    "created_at": "2025-04-20T20:30:00.000000",
+    "completed_by": null,
+    "time_era": "future"
+  },
+  {
+    "id": 25,
+    "description": "Create interactive timeline of 2000s events",
+    "creator": "historical_interpreter",
+    "reward": 380,
+    "status": "open",
+    "created_at": "2025-04-20T21:00:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
+  },
+  {
+    "id": 26,
+    "description": "Test AI for predicting future trends",
+    "creator": "trend_forecaster",
+    "reward": 570,
+    "status": "open",
+    "created_at": "2025-04-20T21:30:00.000000",
+    "completed_by": null,
+    "time_era": "future"
+  },
+  {
+    "id": 27,
+    "description": "Create digital time capsule for 2020s",
+    "creator": "digital_timekeeper",
+    "reward": 285,
+    "status": "open",
+    "created_at": "2025-04-20T22:00:00.000000",
+    "completed_by": null,
+    "time_era": "transition"
+  },
+  {
+    "id": 28,
+    "description": "Compile 2010s viral videos for AI training",
+    "creator": "viral_video_archivist",
+    "reward": 475,
+    "status": "open",
+    "created_at": "2025-04-20T22:30:00.000000",
+    "completed_by": null,
+    "time_era": "past"
+  },
+  {
+    "id": 29,
+    "description": "Test time travel insurance policies",
+    "creator": "temporal_insurance",
+    "reward": 665,
+    "status": "open",
+    "created_at": "2025-04-20T23:00:00.000000",
+    "completed_by": null,
+    "time_era": "future"
   }
 ]
