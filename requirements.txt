@@ -1,0 +1,4 @@
+curses-menu==2.1.0
+pyyaml==6.0.1
+jsonpickle==3.0.2
+python-dateutil==2.8.2
