@@ -1,6 +1,6 @@
 # Zaman
 
->[!Track]
+>Track:
 >Vibe Coding
 
 ### Concept:
