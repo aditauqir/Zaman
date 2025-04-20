@@ -6,17 +6,21 @@ import json
 from pathlib import Path
 from datetime import datetime
 
+from task_manager import TaskManager
+
 class AppState:
     def __init__(self, username):
         self.username = username
-        self.stats_file = Path("data") / "stats" / f"{username}.json"
-        self.ledger_file = Path("data") / "zaman_ledger.json"
-        self.load_stats()
-        self.selected_option = 0
+        self.task_manager = TaskManager()
+        # ... rest of existing code ...
+        
+        # Update menu options
         self.menu_options = [
             "Earn Tokis",
             "Cash Out Tokis",
             "Buy Tokis",
+            "Create Task",
+            "Browse Tasks",
             "Logout"
         ]
         self.transaction_history = []
@@ -121,3 +125,21 @@ class AppState:
     
     def nav_down(self):
         self.selected_option = min(len(self.menu_options) - 1, self.selected_option + 1)
+        
+    def create_task(self, description):
+        """Create a new task"""
+        return self.task_manager.create_task(description, self.username)
+    
+    def get_available_tasks(self):
+        """Get list of available tasks"""
+        return self.task_manager.get_all_tasks()
+    
+    def complete_task(self, task_id):
+        """Complete a task and earn rewards"""
+        reward = self.task_manager.complete_task(task_id, self.username)
+        if reward:
+            self.toki_balance += reward['toki']
+            self.eddie_balance += reward['eddies']
+            self.save_stats()
+            return True, f"Task completed! Earned {reward['toki']} toki and {reward['eddies']} eddies"
+        return False, "Task not found or already completed"
